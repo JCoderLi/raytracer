@@ -11,4 +11,5 @@ def magnitude(arr):
 def normalize(arr):
     print(list(map(lambda x: x/x**2, arr)))
 
-normalize([1,2,3])
+def dotproduct(arr1, arr2):
+    print()

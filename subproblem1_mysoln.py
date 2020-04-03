@@ -30,6 +30,3 @@ def vectorprod(arr, num):
     print(list(map(lambda x: x*num, arr)))
 
 
-# CODE FROM TUTORIAL:
-
-# write tests before implentation?

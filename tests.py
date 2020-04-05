@@ -1,33 +1,27 @@
 import unittest
-from vector import Vector
+from color import Color
 
-class TestVectors(unittest.TestCase):
+
+class TestColors(unittest.TestCase):
     def setUp(self):
-         self.v1 = Vector(1.0, -2.0, -2.0)
-         self.v2 = Vector(3.0, 6.0, 9.0)
-    def test_magnitude(self):
-        self.assertEqual(self.v1.magnitude(), 3.0)
+        self.red = Color(1,0,0)
+        self.green = Color(0,1,0)
+        self.blue = Color(0,0,1)
 
-    def normalize():
-        self.assertEqual(self.v1.normalize(), )
+    def test_convert(self):
+        self.assertEqual(getattr(self.red.convert(), "r"), 255.0)
+        self.assertEqual(getattr(self.green.convert(), "g"), 255.0)
+        self.assertEqual(getattr(self.blue.convert(), "b"), 255.0)
 
     def test_addition(self):
-        addition = self.v1 + self.v2
-        self.assertEqual(getattr(addition, "x"), 4.0)
-
-    def test_subtraction(self):
-        subtraction = self.v1 - self.v2
-        self.assertEqual(getattr(subtraction, "x"), -2.0)
-
-    def test_division(self):
-        division = self.v1 / 3
-        self.assertEqual(getattr(division, "x"), 1.0/3)
-
+        yellow = self.red + self.green
+        white = self.red + self.green + self.blue
+        self.assertEqual(getattr(yellow.convert(), "r"), 255.0)
+        self.assertEqual(getattr(yellow.convert(), "g"), 255.0)
+        self.assertEqual(getattr(yellow.convert(), "b"), 0)
+        self.assertEqual(white.convert().r, 255)
     def test_multiplication(self):
-        multiplication = self.v1 * 3
-        rmultiplication = 3 * self.v1
-        self.assertEqual(getattr(multiplication, "x"), 1.0 * 3)
-        self.assertEqual(getattr(multiplication, "x"), 1.0 * 3)
-
+        special = self.red.mult("r", .001)
+        self.assertEqual(special.convert().r, 0)
 if __name__ == "__main__":
     unittest.main()
